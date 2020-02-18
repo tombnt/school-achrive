@@ -1,4 +1,4 @@
-# Graphen [Zurück zur Startseite](../)
+# Graphen # [Zurück zur Startseite](/index.md)
 
 ## Klasse des Graphen (Referenz auf Vertex und Edge)
 ```java
