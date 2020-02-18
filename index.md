@@ -1,2 +1,2 @@
-# Inhaltsverzeichnis
-[Lineare Datenstukturen](linear.md)
+# Inhaltsverzeichnis (I)
+[Lineare Datenstukturen](/linear.md)
