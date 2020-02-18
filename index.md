@@ -1,2 +1,2 @@
 # Inhaltsverzeichnis
-[Lineare Datenstukturen](gh-pages/linear.md)
+[Lineare Datenstukturen](linear.md)
