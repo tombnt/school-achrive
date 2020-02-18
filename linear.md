@@ -66,7 +66,6 @@ public class Queue<ContentType> {
 		public ContentType getContent() {
 			return content;
 		}
-		
 	}
 	
 	/* ----------- Ende der privaten inneren Klasse -------------- */
@@ -621,6 +620,5 @@ public class List<ContentType> {
       return null;
     }
   }
-  
 }
 ```
