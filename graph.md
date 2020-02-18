@@ -318,22 +318,6 @@ public class Graph{
 ```java
 
 
-  /**
-   * Die Anfrage liefert eine neue Liste aller Kantenobjekte vom Typ List<Edge>.
-   */
-  public List<Edge> getEdges(){
-    //Eine neue Liste mit allen Edge-Objekten erstellen.
-    List<Edge> result = new List<Edge>();
-    edges.toFirst();
-    while (edges.hasAccess()){
-      result.append(edges.getContent());
-      edges.next();
-    }
-    //Aktuelles Element zum Anfang bewegen.
-    result.toFirst();
-
-    return result;
-  }
 
   /**
    * Die Anfrage liefert das Knotenobjekt mit pID als ID. Ist ein solchen Knotenobjekt nicht im Graphen enthalten,
@@ -418,49 +402,7 @@ public class Graph{
 
     //Knoten entfernen
     vertices.toFirst();
-    while (vertices.hasAccess() && vertices.getContent()!= pVertex){
-      vertices.next();
-    }
-    if (vertices.hasAccess()){
-      vertices.remove();
-    }
-  }
 
-  /**
-   * Der Auftrag entfernt die Kante pEdge aus dem Graphen. Ist die Kante pEdge nicht 
-   * im Graphen enthalten, passiert nichts.
-   */
-  public void removeEdge(Edge pEdge){
-    //Kante aus Kantenliste des Graphen entfernen.
-    edges.toFirst();
-    while (edges.hasAccess()){
-      if (edges.getContent() == pEdge){
-        edges.remove();
-      } else {
-        edges.next();
-      }
-    }
-  }
-
-  /**
-   * Der Auftrag setzt die Markierungen aller Knoten des Graphen auf pMark.
-   */
-  public void setAllVertexMarks(boolean pMark){
-    vertices.toFirst();
-    while (vertices.hasAccess()){
-      vertices.getContent().setMark(pMark);
-      vertices.next();
-    }
-  }
-
-  /**
-   * Der Auftrag setzt die Markierungen aller Kanten des Graphen auf pMark.
-   */
-  public void setAllEdgeMarks(boolean pMark){
-    edges.toFirst();
-    while (edges.hasAccess()){
-      edges.getContent().setMark(pMark);
-      edges.next();
     }
   }
 
