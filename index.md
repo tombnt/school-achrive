@@ -1,37 +1,146 @@
-## Welcome to GitHub Pages
+# Lineare Datenstrukturen
+## Queue
+```java
+/**
+ * <p>
+ * Materialien zu den zentralen NRW-Abiturpruefungen im Fach Informatik ab 2018
+ * </p>
+ * <p>
+ * Generische Klasse Queue<ContentType>
+ * </p>
+ * <p>
+ * Objekte der generischen Klasse Queue (Warteschlange) verwalten beliebige
+ * Objekte vom Typ ContentType nach dem First-In-First-Out-Prinzip, d.h., das
+ * zuerst abgelegte Objekt wird als erstes wieder entnommen. Alle Methoden haben
+ * eine konstante Laufzeit, unabhaengig von der Anzahl der verwalteten Objekte.
+ * </p>
+ * 
+ * @author Qualitaets- und UnterstuetzungsAgentur - Landesinstitut fuer Schule
+ * @version Generisch_02 2014-02-21
+ */
+public class Queue<ContentType> {
+	
+	/* --------- Anfang der privaten inneren Klasse -------------- */
+	
+	private class QueueNode {
 
-You can use the [editor on GitHub](https://github.com/tombnt/school-achrive/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+		private ContentType content = null;
+		private QueueNode nextNode = null;
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+		/**
+		 * Ein neues Objekt vom Typ QueueNode<ContentType> wird erschaffen. 
+		 * Der Inhalt wird per Parameter gesetzt. Der Verweis ist leer.
+		 * 
+		 * @param pContent das Inhaltselement des Knotens vom Typ ContentType
+		 */
+		public QueueNode(ContentType pContent) {
+			content = pContent;
+			nextNode = null;
+		}
 
-### Markdown
+		/**
+		 * Der Verweis wird auf das Objekt, das als Parameter uebergeben wird,
+		 * gesetzt.
+		 * 
+		 * @param pNext der Nachfolger des Knotens
+		 */
+		public void setNext(QueueNode pNext) {
+			nextNode = pNext;
+		}
+		
+		/**
+		 * Liefert das naechste Element des aktuellen Knotens.
+		 * 
+		 * @return das Objekt vom Typ QueueNode, auf das der aktuelle Verweis zeigt
+		 */
+		public QueueNode getNext() {
+			return nextNode;
+		}
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+		/**
+		 * Liefert das Inhaltsobjekt des Knotens vom Typ ContentType.
+		 * 
+		 * @return das Inhaltsobjekt des Knotens
+		 */
+		public ContentType getContent() {
+			return content;
+		}
+		
+	}
+	
+	/* ----------- Ende der privaten inneren Klasse -------------- */
+	
+	private QueueNode head;
+	private QueueNode tail;
 
-```markdown
-Syntax highlighted code block
+	/**
+	 * Eine leere Schlange wird erzeugt. 
+	 * Objekte, die in dieser Schlange verwaltet werden, muessen vom Typ
+	 * ContentType sein.
+	 */
+	public Queue() {
+		head = null;
+		tail = null;
+	}
 
-# Header 1
-## Header 2
-### Header 3
+	/**
+	 * Die Anfrage liefert den Wert true, wenn die Schlange keine Objekte enthaelt, 
+	 * sonst liefert sie den Wert false.
+	 * 
+	 * @return true, falls die Schlange leer ist, sonst false
+	 */
+	public boolean isEmpty() {
+		return head == null;
+	}
 
-- Bulleted
-- List
+	/**
+	 * Das Objekt pContentType wird an die Schlange angehaengt. 
+	 * Falls pContentType gleich null ist, bleibt die Schlange unveraendert.
+	 * 
+	 * @param pContent
+	 *            das anzuhaengende Objekt vom Typ ContentType
+	 */
+	public void enqueue(ContentType pContent) {
+		if (pContent != null) {
+			QueueNode newNode = new QueueNode(pContent);
+			if (this.isEmpty()) {
+				head = newNode;
+				tail = newNode;
+			} else {
+				tail.setNext(newNode);
+				tail = newNode;
+			}
+		}
+	}
 
-1. Numbered
-2. List
+	/**
+	 * Das erste Objekt wird aus der Schlange entfernt. 
+	 * Falls die Schlange leer ist, wird sie nicht veraendert.
+	 */
+	public void dequeue() {
+		if (!this.isEmpty()) {
+			head = head.getNext();
+			if (this.isEmpty()) {
+				head = null;
+				tail = null;
+			}
+		}
+	}
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+	/**
+	 * Die Anfrage liefert das erste Objekt der Schlange. 
+	 * Die Schlange bleibt unveraendert. 
+	 * Falls die Schlange leer ist, wird null zurueckgegeben.
+	 *
+	 * @return das erste Objekt der Schlange vom Typ ContentType oder null,
+	 *         falls die Schlange leer ist
+	 */
+	public ContentType front() {
+		if (this.isEmpty()) {
+			return null;
+		} else {
+			return head.getContent();
+		}
+	}
+}
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/tombnt/school-achrive/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
