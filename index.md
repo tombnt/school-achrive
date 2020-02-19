@@ -1,4 +1,4 @@
 # Inhaltsverzeichnis
 * [Lineare Datenstukturen](/linear.md)
-* [Bäume](/baum.md) 
+* [Bäume](/tree.md) 
 * [Graphen](/graph.md)
